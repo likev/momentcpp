@@ -7,8 +7,19 @@ This library consist of only one header file without other dependency,your compi
 #include <iostream>
 #include "./include/moment.hpp"
 
-int main(){
-  std::cout << moment::moment() << std::endl;
+int main() 
+{
+  std::cout << moment::moment(1503228936974) << std::endl;
+  std::cout << +moment::moment() << std::endl;
+  std::cout << moment::moment().unix() << std::endl;
+  std::cout << moment::moment().unix(1503228936) << std::endl;
+  std::cout << moment::moment(2017,8,20) << std::endl;
+
+  std::cout << moment::moment(2017, 8, 20, 16,17,05) << std::endl;
+
+  std::cout << moment::moment().year(2018).hour(12) << std::endl;
+
+  return 0;
 }
 ```
 
@@ -51,7 +62,7 @@ create a moment with year,month...
 - **std::string toString() const**
 - **std::ostream& operator<<(std::ostream& os, const moment& m)** you can use std::cout<<monment::monment()
 
-For convenience, both singular and plural method names exist. you can use years(),months() as well.
+For convenience, both singular and plural method names exist. you can use years(),months()... as well.
 
 
 

@@ -12,6 +12,8 @@ int main()
 
   std::cout << moment::moment(2017, 8, 20, 16,17,05) << std::endl;
 
+  std::cout << moment::moment().year(2018).hour(12) << std::endl;
+
   return 0;
 }
 
