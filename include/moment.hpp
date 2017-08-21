@@ -96,12 +96,17 @@ namespace moment {
 
 		moment& month(int newmonth)
 		{
-			/*
-			int year_diff = newmonth / 12;
-			newmonth %= 12;
+			auto newMonth = moment(year(), newmonth, 1),
+				nextMonth = moment(year(), newmonth + 1, 1);
 
-			local_tm.tm_year += year_diff;
-			*/
+			int daysOfNewMonth = nextMonth.dayOfYear() - newMonth.dayOfYear();
+			
+			//std::cout << newMonth << ' ' << nextMonth << std::endl;
+
+			//std::cout << "daysOfNewMonth " << daysOfNewMonth;
+
+			if (daysOfNewMonth < date()) date(daysOfNewMonth);
+
 			local_tm.tm_mon = newmonth;
 
 			setTimePoint();
@@ -142,6 +147,40 @@ namespace moment {
 		moment& dates(int newday)
 		{
 			return date(newday);
+		}
+
+		int day() const
+		{
+			return local_tm.tm_wday;
+		}
+
+		moment& day(int newday)
+		{
+			int day_diff = newday - local_tm.tm_wday;
+
+			return add(day_diff, "days");
+		}
+
+		int days() const
+		{
+			return day();
+		}
+
+		moment& days(int newday)
+		{
+			return day(newday);
+		}
+
+		int dayOfYear() const
+		{
+			return local_tm.tm_yday + 1;
+		}
+
+		moment& dayOfYear(int newday)
+		{
+			int day_diff = newday - local_tm.tm_yday -1;
+
+			return add(day_diff, "days");
 		}
 
 		int hour() const

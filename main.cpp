@@ -25,6 +25,9 @@ int main()
 		<< std::endl;
 	std::cout << moment().unix() << std::endl;
 
+	std::cout << " dayOfWeek: " << moment().day() << std::endl;
+	std::cout << " dayOfYear: " << moment().month(0).date(1).dayOfYear() << std::endl;
+
 
 	//Set
 	//---------------------------------------------
@@ -32,6 +35,11 @@ int main()
 	std::cout << moment().year(2017).add(3,"years") << std::endl;
 	std::cout << moment().year(2017).hour(12).subtract(2,"hours") << std::endl;
 	std::cout << moment().unix(1503228936) << std::endl;
+
+	std::cout << "moment(2012,0,31).month(1): " << moment(2012,0,31).month(1) << std::endl;
+	
+	std::cout << " dayOfWeek: " << moment().day(2) << std::endl;
+	std::cout << " dayOfYear: " << moment().dayOfYear(2) << std::endl;
 
 	std::cout << moment(2017, 8, 20, 16, 17, 05) - moment(2017, 8, 20, 16, 17, 15) << std::endl;
 
