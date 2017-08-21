@@ -6,7 +6,7 @@ int main()
 {
 	using moment::moment;
 
-	//Greate
+	//Create
 	std::cout << moment() << std::endl;
 	std::cout << +moment() << std::endl;
 	std::cout << moment(2017, 8, 20) << std::endl;
