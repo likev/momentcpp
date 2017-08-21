@@ -36,9 +36,9 @@ namespace moment {
 			auto tm_point = system_clock::from_time_t(mktime(&local_tm));
 
 			milliSecond = duration_cast<std::chrono::milliseconds> (m_unix.time_since_epoch()).count()
-							- duration_cast<std::chrono::milliseconds> (tm_point.time_since_epoch() ).count();
+				- duration_cast<std::chrono::milliseconds> (tm_point.time_since_epoch()).count();
 		}
-		
+
 	public:
 
 		moment()
@@ -54,9 +54,9 @@ namespace moment {
 		}
 
 
-		moment(int year, int month, int day, int hour=0, int min=0, int sec=0, int millisec=0)
+		moment(int year, int month, int day, int hour = 0, int min = 0, int sec = 0, int millisec = 0)
 		{
-			local_tm = {sec,min,hour,day,month-1,year-1900};
+			local_tm = { sec,min,hour,day,month,year - 1900 };
 
 			milliSecond = millisec;
 
@@ -66,13 +66,13 @@ namespace moment {
 
 		int year() const
 		{
-			return local_tm.tm_year+1900;
+			return local_tm.tm_year + 1900;
 		}
 
 		moment& year(int newyear)
 		{
 
-			local_tm.tm_year = newyear-1900;
+			local_tm.tm_year = newyear - 1900;
 			setTimePoint();
 
 
@@ -96,10 +96,12 @@ namespace moment {
 
 		moment& month(int newmonth)
 		{
+			/*
 			int year_diff = newmonth / 12;
 			newmonth %= 12;
 
 			local_tm.tm_year += year_diff;
+			*/
 			local_tm.tm_mon = newmonth;
 
 			setTimePoint();
@@ -152,7 +154,7 @@ namespace moment {
 			int hour_diff = newhour - local_tm.tm_hour;
 
 			m_unix += std::chrono::hours(hour_diff);
-			
+
 			setLocalTm();
 
 			return *this;
@@ -254,7 +256,7 @@ namespace moment {
 		moment& unix(const long long& timestamp_seconds)
 		{
 
-			m_unix = time_point<system_clock>( std::chrono::seconds(timestamp_seconds) );
+			m_unix = time_point<system_clock>(std::chrono::seconds(timestamp_seconds));
 			setLocalTm();
 
 			return *this;
@@ -276,13 +278,61 @@ namespace moment {
 			return std::ctime(&current_time);
 		}
 
+		moment& add(int count, const std::string& unit)
+		{
+			if (unit == "years" || unit == "y")
+			{
+				year(year() + count);
+			}
+			else if (unit == "quarters" || unit == "Q")
+			{
+			}
+			else if (unit == "months" || unit == "M")
+			{
+				month(month() + count);
+			}
+			else if (unit == "weeks" || unit == "w")
+			{
+			}
+			else if (unit == "days" || unit == "d")
+			{
+				date(date() + count);
+			}
+			else if (unit == "hours" || unit == "h")
+			{
+				hour(hour() + count);
+			}
+			else if (unit == "minutes" || unit == "m")
+			{
+				minute(minute() + count);
+			}
+			else if (unit == "seconds" || unit == "s")
+			{
+				second(second() + count);
+			}
+			else if (unit == "milliseconds" || unit == "ms")
+			{
+				millisecond(millisecond() + count);
+			}
+			else
+			{
+			}
+
+			return *this;
+		}
+
+		moment& subtract(int count, const std::string& unit)
+		{
+			return add(-count, unit);
+		}
+
 	};
 
 	std::ostream& operator<<(std::ostream& os, const moment& m)
 	{
 		char prev = std::cout.fill('0');
-		os << m.year()<<'-'<<m.month()+1<<'-'<<m.date()<<' '<< std::setw(2) <<m.hour()<<':' << std::setw(2) <<m.minute()<<':' << std::setw(2) <<m.second()<<'.' << std::setw(3) <<m.millisecond();
-		return os<< std::setw(0) << std::setfill(prev) << std::endl;
+		os << m.year() << '-' << m.month() + 1 << '-' << m.date() << ' ' << std::setw(2) << m.hour() << ':' << std::setw(2) << m.minute() << ':' << std::setw(2) << m.second() << '.' << std::setw(3) << m.millisecond();
+		return os << std::setw(0) << std::setfill(prev);
 	}
 
 }  // namespace moment

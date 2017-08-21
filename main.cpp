@@ -2,18 +2,39 @@
 #include <iostream>
 #include "./include/moment.hpp"
 
-int main() 
+int main()
 {
-  std::cout << moment::moment(1503228936974) << std::endl;
-  std::cout << +moment::moment() << std::endl;
-  std::cout << moment::moment().unix() << std::endl;
-  std::cout << moment::moment().unix(1503228936) << std::endl;
-  std::cout << moment::moment(2017,8,20) << std::endl;
+	using moment::moment;
 
-  std::cout << moment::moment(2017, 8, 20, 16,17,05) << std::endl;
+	//Greate
+	std::cout << moment() << std::endl;
+	std::cout << +moment() << std::endl;
+	std::cout << moment(2017, 8, 20) << std::endl;
+	std::cout << moment(1503228936974) << std::endl;
+	std::cout << moment(2017, 8, 20, 16, 17, 05) << std::endl;
 
-  std::cout << moment::moment().year(2018).hour(12) << std::endl;
+	//Get
+	//---------------------------------------------
+	std::cout <<" year: "<< moment().year()
+		<< " month: " << moment().month()
+		<< " date: " << moment().date()
+		<< " hour: " << moment().hour()
+		<< " minute: " << moment().minute()
+		<< " second: " << moment().second()
+		<< " millisecond: " << moment().millisecond()
+		<< std::endl;
+	std::cout << moment().unix() << std::endl;
 
-  return 0;
+
+	//Set
+	//---------------------------------------------
+	std::cout << moment().year(2017).hour(12) << std::endl;
+	std::cout << moment().year(2017).add(3,"years") << std::endl;
+	std::cout << moment().year(2017).hour(12).subtract(2,"hours") << std::endl;
+	std::cout << moment().unix(1503228936) << std::endl;
+
+	std::cout << moment(2017, 8, 20, 16, 17, 05) - moment(2017, 8, 20, 16, 17, 15) << std::endl;
+
+	return 0;
 }
 
