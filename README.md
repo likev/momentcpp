@@ -1,9 +1,21 @@
-# momentcpp
-DateTime library Like [moment.js](https://momentjs.com/docs/#/parsing/now/), in C++
+# Moment.cpp
+Moment.cpp is C++ DateTime library (inspired by [moment.js](https://momentjs.com/docs/#/parsing/now/)
 
-This library consist of only one header file without other dependency,your compiler must support C++11 std::chrono.
+## Design goals
 
-## usage
+There are myriads of DateTime libraries out there, and each may even have its reason to exist. Our class had these design goals:
+
+- **Intuitive syntax**. In languages such as Javascript, Date is a first class data type. We used all the operator magic of modern C++ to achieve the same feeling in your code. Check out the [examples below](#examples) and you'll know what I mean.
+
+- **Trivial integration**. The whole code consists of a single header file [`moment.hpp`](https://github.com/likev/momentcpp/blob/master/include/moment.hpp). That's it. No library, no subproject, no dependencies, no complex build system. The class is written in vanilla C++11(std::chrono). All in all, everything should require no adjustment of your compiler flags or project settings.
+
+Other aspects were not so important to us:
+
+- **Memory efficiency**. 
+
+- **Speed**. There are certainly [faster DateTime libraries](https://github.com/HowardHinnant/date) out there. However, if your goal is to speed up your development by adding JSON support with a single header, then this library is the way to go. 
+
+## Examples
 ```c++
 
 #include <iostream>
