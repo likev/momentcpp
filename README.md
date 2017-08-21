@@ -1,5 +1,5 @@
 # Moment.cpp
-Moment.cpp is C++ DateTime library (inspired by [moment.js](https://momentjs.com/docs/#/parsing/now/)
+Moment.cpp is C++ DateTime library (inspired by [moment.js](https://momentjs.com/docs/#/parsing/now/) )
 
 ## Design goals
 
