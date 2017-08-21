@@ -78,14 +78,24 @@ create a moment with year,month(0-11)...
 - **int millisecond() const**
 - **moment& millisecond(int newmillisecond)**
 
-- **long long unix() const** get Unix timestamp (seconds since the Unix Epoch)
-- **moment& unix(const long long& timestamp_seconds)** To create a moment from a Unix timestamp (seconds since the Unix Epoch)
+- **long long unix() const** 
 
-- **long long valueOf() const** get the number of milliseconds since the Unix Epoch (Jan 1 1970 12AM UTC).
-- **operator long long() const** auto convert to the number of milliseconds since the Unix Epoch (Jan 1 1970 12AM UTC).
+get Unix timestamp (seconds since the Unix Epoch)
+- **moment& unix(const long long& timestamp_seconds)** 
+
+To create a moment from a Unix timestamp (seconds since the Unix Epoch)
+
+- **long long valueOf() const** 
+
+get the number of milliseconds since the Unix Epoch (Jan 1 1970 12AM UTC).
+- **operator long long() const** 
+
+auto convert to the number of milliseconds since the Unix Epoch (Jan 1 1970 12AM UTC).
 
 - **std::string toString() const**
-- **std::ostream& operator<<(std::ostream& os, const moment& m)** you can use std::cout<<monment::monment()
+- **std::ostream& operator<<(std::ostream& os, const moment& m)** 
+
+you can use std::cout<<monment::monment()
 
 - **moment& add(int count, const std::string& unit)**
 - **moment& subtract(int count, const std::string& unit)**
