@@ -13,7 +13,7 @@ Other aspects were not so important to us:
 
 - **Memory efficiency**. 
 
-- **Speed**. There are certainly [faster DateTime libraries](https://github.com/HowardHinnant/date) out there. However, if your goal is to speed up your development by adding JSON support with a single header, then this library is the way to go. 
+- **Speed**. There are certainly [faster DateTime libraries](https://github.com/HowardHinnant/date) out there. However, if your goal is to speed up your development by adding DateTime support with a single header, then this library is the way to go. 
 
 ## Examples
 ```c++
