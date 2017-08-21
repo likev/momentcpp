@@ -66,7 +66,7 @@ int main()
 }
 ```
 
-## methods
+## Methods
 
 #### `moment()` 
 get the current date and time
