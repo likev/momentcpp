@@ -3,7 +3,7 @@ DateTime library Like [moment.js](https://momentjs.com/docs/#/parsing/now/), in 
 
 This library consist of only one header file without other dependency,your compiler must support C++11 std::chrono.
 
-# usage
+## usage
 ```c++
 
 #include <iostream>
@@ -54,28 +54,43 @@ int main()
 }
 ```
 
-# methods
+## methods
 
-- **`moment()`** get the current date and time
-- **`moment(const long long& timestamp_milliseconds)`** create a moment by passing an integer value representing the number of milliseconds since the Unix Epoch (Jan 1 1970 12AM UTC).
-- **`moment(int year, int month, int day, int hour=0, int min=0, int sec=0, int millisec=0)`** create a moment with year,month(0-11)...
+#### `moment()` 
+get the current date and time
 
-- **`int year() const`** get the year
-- **`moment& year(int newyear)`** set the year
+#### `moment(const long long& timestamp_milliseconds)` 
+create a moment by passing an integer value representing the number of milliseconds since the Unix Epoch (Jan 1 1970 12AM UTC).
 
-- **`int month() const`** get the month 0-11
-- **`moment& month(int newmonth)`** set the month
+#### `moment(int year, int month, int day, int hour=0, int min=0, int sec=0, int millisec=0)` 
+create a moment with year,month(0-11)...
 
- if a moment changed months and the new month did not have enough days to keep the current day of month, it would clamped to the end of the target month.
+#### `int year() const` 
+get the year
+
+#### `moment& year(int newyear)` 
+set the year
+
+#### `int month() const` 
+get the month 0-11
+
+#### `moment& month(int newmonth)` 
+set the month
+
+if a moment changed months and the new month did not have enough days to keep the current day of month, it would clamped to the end of the target month.
  ```c++
  moment([2012, 0, 31]).month(1).format("YYYY-MM-DD"); // 2012-02-29
  ```
 
-- **`int date() const`** get day of month
-- **`moment& date(int newday)`** set day of month
+#### `int date() const` 
+get day of month
 
-- **`int day() const`**
-- **`moment& day(int newday)`**
+#### `moment& date(int newday)` 
+set day of month
+
+#### `int day() const`
+
+#### `moment& day(int newday)`
 
 Gets or sets the day of the week.
 
@@ -85,38 +100,43 @@ If the range is exceeded, it will bubble up to other weeks.
 
 **Note:** `Moment#date` is for the date of the month, and `Moment#day` is for the day of the week.
 
-- **`int dayOfYear() const`**
-- **`moment& dayOfYear(int newday)`**
+#### `int dayOfYear() const`
+#### `moment& dayOfYear(int newday)`
 
 Gets or sets the day of the year.
 
 Accepts numbers from 1 to 366. If the range is exceeded, it will bubble up to the years.
 
-- **`int hour() const`**
-- **`moment& hour(int newhour)`**
+#### `int hour() const`
+#### `moment& hour(int newhour)`
 
-- **`int minute() const`**
-- **`moment& minute(int newminute)`**
+#### `int minute() const`
+#### `moment& minute(int newminute)`
 
-- **`int second() const`**
-- **`moment& second(int newsecond)`**
+#### `int second() const`
+#### `moment& second(int newsecond)`
 
-- **`int millisecond() const`**
-- **`moment& millisecond(int newmillisecond)`**
+#### `int millisecond() const`
+#### `moment& millisecond(int newmillisecond)`
 
-- **`long long unix() const`** get Unix timestamp (seconds since the Unix Epoch)
-- **`moment& unix(const long long& timestamp_seconds)`** To create a moment from a Unix timestamp (seconds since the Unix Epoch)
+#### `long long unix() const` 
+get Unix timestamp (seconds since the Unix Epoch)
 
-- **`long long valueOf() const`** get the number of milliseconds since the Unix Epoch (Jan 1 1970 12AM UTC).
-- **`operator long long() const`** auto convert to the number of milliseconds since the Unix Epoch (Jan 1 1970 12AM UTC).
+#### `moment& unix(const long long& timestamp_seconds)` 
+To create a moment from a Unix timestamp (seconds since the Unix Epoch)
 
-- **`std::string toString() const`**
-- **`std::ostream& operator<<(std::ostream& os, const moment& m)`** you can use std::cout<<monment::monment()
+#### `long long valueOf() const` 
+get the number of milliseconds since the Unix Epoch (Jan 1 1970 12AM UTC).
 
-- **`moment& add(int count, const std::string& unit)`**
-- **`moment& subtract(int count, const std::string& unit)`**
+#### `operator long long() const` 
+auto convert to the number of milliseconds since the Unix Epoch (Jan 1 1970 12AM UTC).
+
+#### `std::string toString() const`
+#### `std::ostream& operator<<(std::ostream& os, const moment& m)` 
+you can use `std::cout<<monment::monment()<<std::endl`
+
+#### `moment& add(int count, const std::string& unit)`
+#### `moment& subtract(int count, const std::string& unit)`
 
 For convenience, both singular and plural method names exist. you can use `years()`,`months()` as well.
-
-
 
